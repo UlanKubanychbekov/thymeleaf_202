@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="#"
+      th:action="@{/api/courses/update/update/{id}(id=${courseId})}"
+      th:method="POST"
+      th:object="${course}">
+
+    <label for="name"></label>
+    <input id="name" th:field="${course.courseName}" placeholder="${course.courseName}">
+    <br><br>
+
+    <label for="date"></label>
+    <input id="date" th:field="${course.data}" placeholder="${course.data}">
+    <br><br>
+    <button type="submit">save</button>
+
+</form>
+
+</body>
+</html>

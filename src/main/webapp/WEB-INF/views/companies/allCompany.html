@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>companies</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>address</th>
+        <th>course</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="company: ${companyList}">
+        <td th:text="${company.id}"></td>
+        <td th:text="${company.companyName}"></td>
+        <td th:text="${company.locatedCountry}"></td>
+        <td>
+            <a th:href="@{courses/company/{id}(id=${company.getId()})}">
+                <button>course</button>
+                <!--    <td>-->
+                <!--      <a th:href="@{courses/{id}(id=${company.getId()})}">-->
+                <!--        <button>Course</button>-->
+                <!--      </a></td>-->
+                <!--    <td>-->
+            </a>
+        </td>
+        <td>
+            <a th:href="@{companies/delete/{id}(id=${company.getId()})}">
+                <button>delete</button>></a>
+        </td>
+        <td>
+            <a th:href="@{companies/update/{id}(id=${company.getId()})}">
+                <button>update</button>></a>
+        </td>
+    </tr>
+    </tbody>
+
+</table>
+<div>
+    <a th:href="@{companies/save}">
+        <button>save</button>
+    </a>
+</div>
+</body>
+</html>

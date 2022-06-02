@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form action="#"
+      th:action="@{/api/companies/update/update/{id}(id=${company})}"
+      th:method="PATCH"
+      th:object="${company}">
+
+    <label for="name">companyName</label>
+    <input id="name" th:field="${c}" placeholder="${course.data}">
+    <br><br>
+    <label for="course"></label>
+    <input id="course" th:field="${springmvc.model.Company.courses}" placeholder="${c}">
+
+    <label for="date"></label>
+    <input id="date" th:field="${springmvc.model.Company.locatedCountry}" placeholder="${course.data}">
+    <br><br>
+    <button type="submit">save</button>
+
+</form>
+
+</body>
+</html>

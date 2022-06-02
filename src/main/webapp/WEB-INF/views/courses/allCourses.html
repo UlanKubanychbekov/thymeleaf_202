@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>courses</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>data</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="courseT:${courses}">
+        <td th:text="${courseT.id}"></td>
+        <td th:text="${courseT.courseName}"></td>
+        <td th:text="${courseT.data}"></td>
+        <td>
+            <a th:href="@{courses/delete/{id}(id=${courseT.getId()})}">
+                <button>delete</button>></a>
+        </td>
+        <td>
+            <a th:href="@{courses/update/{id}(id=${courseT.getId()})}">
+                <button>update</button>></a>
+        </td>
+
+        <td>
+            <a th:href="@{courses}">
+                <button>course</button>></a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div>
+    <a th:href="@{courses/save/{id}(id=${companyId})}">
+        <button>save</button>
+    </a>
+</div>
+<br><br>
+
+<div>
+    <a th:href="@{'/api/companies'}">
+        <button>go back</button>
+    </a>
+</div>
+</body>
+</html>
