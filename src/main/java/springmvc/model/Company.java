@@ -11,7 +11,7 @@ package springmvc.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
+
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,6 +19,7 @@ import java.util.UUID;
 
 import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.EAGER;
+
 
 
 @Entity
@@ -32,7 +33,7 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(name = "company_name")
+    @Column(name = "company_nam")
     private String companyName;
 
     @Column(name = "located_country")
@@ -46,13 +47,4 @@ public class Company {
         this.locatedCountry = locatedCountry;
     }
 
-    @Override
-    public String toString() {
-        return "Company{" +
-                "id=" + id +
-                ", companyName='" + companyName + '\'' +
-                ", locatedCountry='" + locatedCountry + '\'' +
-//                ", courses=" + courses +
-                '}';
-    }
 }

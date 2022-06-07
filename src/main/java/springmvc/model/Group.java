@@ -33,13 +33,18 @@ public class Group {
 
     @Column(name = "finish_date")
     private LocalDate finishDate;
+    @Transient
+    private String courseName;
 
-    @ManyToMany(cascade = {PERSIST, MERGE}, fetch = LAZY)
+    @ManyToMany(cascade = {PERSIST, MERGE}, fetch = EAGER)
     @JoinTable(name = "group_id_course_id", joinColumns = @JoinColumn(name = "group_id"), inverseJoinColumns =
     @JoinColumn(name = "course_id"))
     private List<Course> courses;
 
-//    @OneToMany(cascade = {PERSIST, MERGE, REMOVE}, fetch = EAGER, mappedBy = "group")
-//    private List<Student> students;
-//}
+    @OneToMany(cascade = {PERSIST, MERGE, REMOVE}, fetch = EAGER, mappedBy = "groups")
+    private List<Student> students;
+
+    @ManyToOne(cascade = {REFRESH, MERGE, DETACH, PERSIST})
+    @JoinColumn(name = "company_id")
+    private Company company;
 }

@@ -6,9 +6,12 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import static javax.persistence.CascadeType.*;
+import static javax.persistence.FetchType.EAGER;
 import static javax.persistence.FetchType.LAZY;
 
 @Entity
@@ -25,21 +28,23 @@ public class Course {
     @Column(name = "date")
     private String data;
 
-    @ManyToOne(cascade = {ALL},fetch = LAZY)
+    @ManyToOne(cascade = {ALL},fetch = EAGER)
     private Company company;
 
-//    @ManyToMany(cascade = {MERGE, PERSIST, REFRESH}, fetch = EAGER, mappedBy = "courses")
-//    private List<Group> groups;
-//
-//    @OneToOne(cascade = ALL, fetch = EAGER, mappedBy = "course")
-//    private Teacher teacher;
-//
-//    public void getAllGroup(Group group) {
-//        if (group == null) {
-//            groups = new ArrayList<>();
-//        }
-//        groups.add(group);
-//    }
+    @ManyToMany(cascade = {MERGE, PERSIST, REFRESH,REMOVE}, fetch = EAGER, mappedBy = "courses")
+    private List<Group> groups;
+
+    @OneToOne(cascade = ALL, fetch = EAGER, mappedBy = "course")
+    private Teacher teacher;
+
+    public void getAllGroup(Group group) {
+        if (group == null) {
+            groups = new ArrayList<>();
+        }
+        groups.add(group);
+    }
+
+
 
 
     @Override

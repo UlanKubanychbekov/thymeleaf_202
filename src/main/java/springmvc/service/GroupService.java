@@ -18,33 +18,63 @@ public class GroupService {
     public GroupService(GroupRepositories groupRepositories) {
         this.groupRepositories = groupRepositories;
     }
+//
+//    public void saveGroup(Group group) {
+//        groupRepositories.saveGroup(group);
+//    }
+//
+//    public Optional<Group> findGroupById(UUID id) throws NotFoundException {
+//        return Optional.ofNullable(findGroupById(id)).orElseThrow(() -> new NotFoundException("not found"));
+//
+//    }
+//
+//    public void deleteGroupByID(UUID id) throws NotFoundException {
+//        Group group = findGroupById(id).orElseThrow(() -> new NotFoundException(String.format("Group is id %s not found", id)));
+//        System.out.println(group);
+//        groupRepositories.removeGroupById(id);
+//    }
+//
+//    public List<Group> groups() {
+//        return groupRepositories.getAllGroup();
+//    }
+//
+//    public void updateGroupByID(Group newGroup, UUID id) throws NotFoundException {
+//        Group group = findGroupById(id).orElseThrow(() -> new NotFoundException("not found"));
+//        String groupName = group.getGroupName();
+//        String newGroupName = newGroup.getGroupName();
+//
+//        if (!Objects.equals(group, newGroupName)) {
+//            group.setGroupName(newGroupName);
+//        }
+
 
     public void saveGroup(Group group) {
         groupRepositories.saveGroup(group);
     }
 
-    public Optional<Group> findGroupById(UUID id) throws NotFoundException {
-        return Optional.ofNullable(findGroupById(id)).orElseThrow(() -> new NotFoundException("not found"));
 
+    public List<Group> getGroups(UUID id) {
+        return groupRepositories.getGroups(id);
     }
 
-    public void deleteGroupByID(UUID id) throws NotFoundException {
-        Group group = findGroupById(id).orElseThrow(() -> new NotFoundException(String.format("Group is id %s not found", id)));
-        System.out.println(group);
-        groupRepositories.removeGroupById(id);
+
+    public Group getGroupById(UUID id) {
+        return groupRepositories.getGroupById(id);
     }
 
-    public List<Group> groups() {
-        return groupRepositories.getAllGroup();
+
+    public void deleteGroup(UUID id) {
+        groupRepositories.deleteGroup(id);
     }
 
-    public void updateGroupByID(Group newGroup, UUID id) throws NotFoundException {
-        Group group = findGroupById(id).orElseThrow(() -> new NotFoundException("not found"));
-        String groupName = group.getGroupName();
-        String newGroupName = newGroup.getGroupName();
+    public void updateGroup(UUID id, Group updatedGroup) {
+        groupRepositories.updateGroup(id, updatedGroup);
+    }
 
-        if (!Objects.equals(group, newGroupName)) {
-            group.setGroupName(newGroupName);
-        }
+
+    public List<Group> getGroupByCompanyId(UUID id) {
+        return groupRepositories.getGroupByCompanyId(id);
     }
 }
+
+

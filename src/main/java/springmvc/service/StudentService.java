@@ -1,24 +1,24 @@
-//package springmvc.service;
-//
-//import javassist.NotFoundException;
-//import org.springframework.stereotype.Service;
-//import springmvc.model.Group;
-//import springmvc.model.Student;
-//import springmvc.repositories.StudentRepositories;
-//
-//import java.util.List;
-//import java.util.Objects;
-//import java.util.Optional;
-//import java.util.UUID;
-//
-//@Service
-//public class StudentService {
-//
-//    private final StudentRepositories studentRepositories;
-//
-//    public StudentService(StudentRepositories studentRepositories) {
-//        this.studentRepositories = studentRepositories;
-//    }
+package springmvc.service;
+
+import javassist.NotFoundException;
+import org.springframework.stereotype.Service;
+import springmvc.model.Group;
+import springmvc.model.Student;
+import springmvc.repositories.StudentRepositories;
+
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.UUID;
+
+@Service
+public class StudentService {
+
+    private final StudentRepositories studentRepositories;
+
+    public StudentService(StudentRepositories studentRepositories) {
+        this.studentRepositories = studentRepositories;
+    }
 //
 //    public void save(Student student) {
 //        studentRepositories.saveStudent(student);
@@ -53,3 +53,28 @@
 //        }
 //    }
 //}
+
+    public void saveStudent(Student student) {
+        studentRepositories.saveStudent(student);
+    }
+
+
+    public List<Student> getStudents(UUID id) {
+        return studentRepositories.getStudents(id);
+    }
+
+
+    public Student getStudentById(UUID id) {
+        return studentRepositories.getStudentById(id);
+    }
+
+
+    public void deleteStudent(UUID id) {
+        studentRepositories.deleteStudent(id);
+    }
+
+
+    public void updateStudent(UUID id, Student updatedStudent) {
+        studentRepositories.updateStudent(id, updatedStudent);
+    }
+}

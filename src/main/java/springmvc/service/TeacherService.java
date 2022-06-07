@@ -1,25 +1,25 @@
-//package springmvc.service;
-//
-//import javassist.NotFoundException;
-//import org.springframework.stereotype.Service;
-//import springmvc.model.Teacher;
-//import springmvc.repositories.TeacherRepositories;
-//
-//import java.util.List;
-//import java.util.Objects;
-//import java.util.Optional;
-//import java.util.UUID;
-//
-//@Service
-//public class TeacherService {
-//
-//    private final TeacherRepositories teacherRepositories;
-//
-//    public TeacherService(TeacherRepositories teacherRepositories) {
-//        this.teacherRepositories = teacherRepositories;
-//
-//
-//    }
+package springmvc.service;
+
+import javassist.NotFoundException;
+import org.springframework.stereotype.Service;
+import springmvc.model.Teacher;
+import springmvc.repositories.TeacherRepositories;
+
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.UUID;
+
+@Service
+public class TeacherService {
+
+    private final TeacherRepositories teacherRepositories;
+
+    public TeacherService(TeacherRepositories teacherRepositories) {
+        this.teacherRepositories = teacherRepositories;
+
+
+    }
 //    public void saveTeachers(Teacher teacher){
 //        teacherRepositories.saveTeacher(teacher);
 //    }
@@ -50,3 +50,29 @@
 //
 //    }
 //}
+
+    public void saveTeacher(Teacher teacher) {
+        teacherRepositories.saveTeacher(teacher);
+    }
+
+
+    public List<Teacher> getTeachers(UUID id) {
+        return teacherRepositories.getTeachers(id);
+    }
+
+
+    public Teacher getTeacherById(UUID id) {
+        return teacherRepositories.getTeacherById(id);
+    }
+
+
+    public void deleteTeacher(UUID id) {
+        teacherRepositories.deleteTeacher(id);
+    }
+
+
+    public void updateTeacher(UUID id, Teacher updatedTeacher) {
+        teacherRepositories.updateTeacher(id, updatedTeacher);
+    }
+
+}

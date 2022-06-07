@@ -19,39 +19,63 @@ public class CompanyService {
         this.companyRepository = companyRepository;
     }
 
+//
+//    public void saveCompany(Company company) {
+//        companyRepository.saveCompany(company);
+//    }
+//
+//    public Optional<Company> findCompanyById(UUID uuid) {
+//        return companyRepository.findCompanyById(uuid);
+//    }
+//
+//    public void deleteCompanyById(UUID uuid) throws NotFoundException {
+//        Company companyById = findCompanyById(uuid)
+//                .orElseThrow(() -> new NotFoundException(String.format("Company is id %s not found", uuid)));
+//        System.out.println(companyById);
+//        companyRepository.deleteCompanyById(uuid);
+//    }
+//
+//    public void updateCompanyById(Company newCompany, UUID id) throws NotFoundException {
+//
+//        companyRepository.updateCompanyById(id, newCompany);
+//        Company company = companyRepository.findCompanyById(id).orElseThrow(() -> new NotFoundException("not found"));
+//        String companyName = company.getCompanyName();//
+//        String newCompanyName = newCompany.getCompanyName();//
+//        String newLocatedCountry = newCompany.getLocatedCountry();
+//        if (!Objects.equals(newCompany, newCompanyName) || !Objects.equals(newCompany, newLocatedCountry)) {
+//            company.setCompanyName(newCompanyName);
+//            company.setLocatedCountry(newLocatedCountry);
+//        }
+//
+//    }
+//
+//
+//        public List<Company> companies () {
+//            return companyRepository.getALLCompany();
+//        }
+//    }
 
-    public void saveCompany(Company company) {
-        companyRepository.saveCompany(company);
+
+    public void save(Company company) {
+        companyRepository.save(company);
     }
 
-    public Optional<Company> findCompanyById(UUID uuid) {
-        return companyRepository.findCompanyById(uuid);
+
+    public List<Company> getCompanies() {
+        return companyRepository.getCompanies();
     }
 
-    public void deleteCompanyById(UUID uuid) throws NotFoundException {
-        Company companyById = findCompanyById(uuid)
-                .orElseThrow(() -> new NotFoundException(String.format("Company is id %s not found", uuid)));
-        System.out.println(companyById);
-        companyRepository.deleteCompanyById(uuid);
+
+    public Company getCompanyById(UUID id) {
+        return companyRepository.getCompanyById(id);
     }
 
-    public void updateCompanyById(Company newCompany, UUID id) throws NotFoundException {
-        Company company = companyRepository.findCompanyById(id).orElseThrow(() -> new NotFoundException("not found"));
-        String companyName = company.getCompanyName();
-        String newCompanyName = newCompany.getCompanyName();
-
-        if (!Objects.equals(companyName, newCompanyName)) {
-            company.setCompanyName(newCompanyName);
-        }
-
-        String locatedCountry = company.getLocatedCountry();
-        String newLocatedCountry = newCompany.getLocatedCountry();
-        if (!Objects.equals(locatedCountry, newLocatedCountry)) {
-            company.setLocatedCountry(newLocatedCountry);
-        }
+    public void deleteCompany(UUID id) {
+        companyRepository.deleteCompany(id);
     }
 
-    public List<Company> companies() {
-        return companyRepository.getALLCompany();
+
+    public void updateCompany(UUID id, Company updatedCompany) {
+        companyRepository.updateCompanyById( updatedCompany,id);
     }
 }

@@ -1,28 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
 
-<form action="#"
-      th:action="@{/api/companies/update/update/{id}(id=${company})}"
-      th:method="PATCH"
-      th:object="${company}">
+<!--<form action="#"-->
+<!--      th:action="@{'/api/companies/update/' + ${id}}"-->
+<!--      th:method="POST"-->
+<!--      th:object="${companies}">-->
 
-    <label for="name">companyName</label>
-    <input id="name" th:field="${c}" placeholder="${course.data}">
-    <br><br>
-    <label for="course"></label>
-    <input id="course" th:field="${springmvc.model.Company.courses}" placeholder="${c}">
+<!--&lt;!&ndash;    <label for="name"></label>&ndash;&gt;-->
+<!--&lt;!&ndash;    <input id="name" th:field="${companies.get().}" placeholder="s">&ndash;&gt;-->
+<!--&lt;!&ndash;    <br><br>&ndash;&gt;-->
+<!--    <label for="courrse"></label>-->
+<!--    <input id="courrse" th:field="${companies.get().locatedCountry}" placeholder="${c}">-->
 
-    <label for="date"></label>
-    <input id="date" th:field="${springmvc.model.Company.locatedCountry}" placeholder="${course.data}">
-    <br><br>
-    <button type="submit">save</button>
+<!--    <label for="datre"></label>-->
+<!--    <input id="datre" th:field="${companies.get().id}" placeholder="${course.data}">-->
+<!--    <br><br>-->
+<!--    <button type="submit">save</button>-->
 
-</form>
+<!--</form>-->
 
-</body>
-</html>
+<!--</body>-->
+<!--</html>-->
